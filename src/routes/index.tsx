@@ -42,7 +42,7 @@ const WRITING = [
     title: "The Quiet Power of Saying Less",
     blurb:
       "Why the most persuasive brands whisper — and what happens to the ones that shout.",
-    pub: "The Atlantic-style column",
+    pub: "The Ledger Review",
     year: "2026",
   },
   {
