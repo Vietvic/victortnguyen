@@ -77,21 +77,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Elena Marsh — Writer & Brand Consultant" },
+      { title: "Victor Nguyen — Management Information Systems" },
       {
         name: "description",
         content:
-          "Writer and brand consultant helping thoughtful companies find their voice through essays, brand narratives, and editorial strategy.",
+          "Management Information Systems professional combining systems administration, business operations, data, and cybersecurity.",
       },
-      { property: "og:title", content: "Elena Marsh — Writer & Brand Consultant" },
+      { property: "og:title", content: "Victor Nguyen — Management Information Systems" },
       {
         property: "og:description",
         content:
-          "Essays, brand narratives, and editorial strategy for thoughtful companies.",
+          "Systems, operations, data, and cybersecurity experience focused on practical business outcomes.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -107,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap",
       },
     ],
   }),
