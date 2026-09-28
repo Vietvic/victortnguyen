@@ -180,9 +180,12 @@ function Projects() {
         <div className="grid gap-5 border-b border-primary-foreground/20 pb-10 md:grid-cols-[1fr_2fr]"><p className="eyebrow text-signal">Selected projects</p><div><h2 className="font-display text-3xl md:text-5xl">Built, assessed, and improved.</h2><p className="mt-4 max-w-2xl leading-relaxed text-primary-foreground/65">Coursework and community initiatives that show how I approach information systems: understand the need, organize the work, and deliver a usable result.</p></div></div>
         <div className="grid md:grid-cols-2">
           {PROJECTS.map((project, index) => <article key={project.number} className={`border-b border-primary-foreground/20 py-10 md:px-8 ${index % 2 === 0 ? "md:border-r md:pl-0" : "md:pr-0"}`}>
-            <div className="flex items-center justify-between"><span className="font-display text-3xl text-signal">{project.number}</span><span className="text-xs font-semibold uppercase text-primary-foreground/50">{project.category}</span></div>
-            <h3 className="font-display mt-8 text-2xl">{project.title}</h3><p className="mt-4 text-sm leading-relaxed text-primary-foreground/65">{project.body}</p>
-            <div className="mt-6 flex flex-wrap gap-2">{project.tools.map((tool) => <span key={tool} className="border border-primary-foreground/20 px-2.5 py-1 text-xs text-primary-foreground/70">{tool}</span>)}</div>
+            <Link to={project.href ?? "/projects/frayeo-digital-literacy"} className="group block" disabled={!project.href}>
+              <div className="flex items-center justify-between"><span className="font-display text-3xl text-signal">{project.number}</span><span className="text-xs font-semibold uppercase text-primary-foreground/50">{project.category}</span></div>
+              <h3 className="font-display mt-8 text-2xl">{project.title}</h3><p className="mt-4 text-sm leading-relaxed text-primary-foreground/65">{project.body}</p>
+              <div className="mt-6 flex flex-wrap gap-2">{project.tools.map((tool) => <span key={tool} className="border border-primary-foreground/20 px-2.5 py-1 text-xs text-primary-foreground/70">{tool}</span>)}</div>
+              <span className={`mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide transition-opacity group-hover:opacity-80 ${project.href ? "text-signal" : "text-primary-foreground/0"}`}>View project <ArrowUpRight size={14} /></span>
+            </Link>
           </article>)}
         </div>
       </div>
