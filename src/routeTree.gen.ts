@@ -10,33 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsFrayeoDigitalLiteracyRouteImport } from './routes/projects.frayeo-digital-literacy'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsFrayeoDigitalLiteracyRoute =
+  ProjectsFrayeoDigitalLiteracyRouteImport.update({
+    id: '/projects/frayeo-digital-literacy',
+    path: '/projects/frayeo-digital-literacy',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/projects/frayeo-digital-literacy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/projects/frayeo-digital-literacy'
+  id: '__root__' | '/' | '/projects/frayeo-digital-literacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjectsFrayeoDigitalLiteracyRoute: typeof ProjectsFrayeoDigitalLiteracyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +59,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/frayeo-digital-literacy': {
+      id: '/projects/frayeo-digital-literacy'
+      path: '/projects/frayeo-digital-literacy'
+      fullPath: '/projects/frayeo-digital-literacy'
+      preLoaderRoute: typeof ProjectsFrayeoDigitalLiteracyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjectsFrayeoDigitalLiteracyRoute: ProjectsFrayeoDigitalLiteracyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

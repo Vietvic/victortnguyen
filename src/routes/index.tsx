@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight, Download, Mail, MapPin } from "lucide-react";
 import type React from "react";
 import misWorkspace from "@/assets/mis-workspace.jpg";
@@ -60,8 +60,8 @@ const EXPERIENCE = [
   },
 ];
 
-const PROJECTS = [
-  { number: "01", category: "Systems implementation", title: "FRAYEO Digital Literacy Program", body: "Planned and implemented a four-week community technology program, coordinating curriculum, schedules, participants, materials, classroom support, and follow-up. Integrated Northstar concepts with current workplace technology, cybersecurity, AI, and career-readiness topics.", tools: ["Program planning", "Training", "Process design"] },
+const PROJECTS: { number: string; category: string; title: string; body: string; tools: string[]; href?: string }[] = [
+  { number: "01", category: "Systems implementation", title: "FRAYEO Digital Literacy Program", body: "Planned and implemented a four-week community technology program, coordinating curriculum, schedules, participants, materials, classroom support, and follow-up. Integrated Northstar concepts with current workplace technology, cybersecurity, AI, and career-readiness topics.", tools: ["Program planning", "Training", "Process design"], href: "/projects/frayeo-digital-literacy" },
   { number: "02", category: "Application & data", title: "Friendsfy Application", body: "Developed a Spotify-focused social application with an emphasis on backend logic and database management, connecting stored account data to the application experience.", tools: ["Java", "SQL", "SpringToolSuite", "Android Studio"] },
   { number: "03", category: "Infrastructure", title: "Home Server & Networking", body: "Built and secured a Linux home server for file storage, media, applications, and remote access. Applied firewalls, encrypted communication, public-key authentication, containerization, and data redundancy.", tools: ["Linux", "Docker", "SSH", "SQL", "RAID"] },
   { number: "04", category: "Risk & security", title: "Medical Devices Risk Assessment", body: "Assessed vulnerabilities, threats, controls, likelihood, impact, and risk-treatment options for medical-device environments, then documented practical recommendations.", tools: ["Risk assessment", "Controls", "Documentation"] },
