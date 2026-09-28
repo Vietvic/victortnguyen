@@ -132,7 +132,7 @@ function Hero() {
           </p>
           <div className="animate-rise-delay-3 mt-9 flex flex-wrap gap-3">
             <a href="#projects" className="bg-signal inline-flex items-center gap-2 px-5 py-3 text-sm font-bold text-primary transition-opacity hover:opacity-90">View selected projects <ArrowDown size={16} /></a>
-            <a href="/Victor-Nguyen-Resume.pdf" download="Victor-Nguyen-Resume.pdf" className="inline-flex items-center gap-2 border border-primary-foreground/35 px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary-foreground hover:text-primary">Résumé <Download size={16} /></a>
+            <a href="/Victor-Nguyen-Resume.pdf" download="Victor-Nguyen-Resume.pdf" onClick={downloadResume} className="inline-flex items-center gap-2 border border-primary-foreground/35 px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary-foreground hover:text-primary">Résumé <Download size={16} /></a>
           </div>
         </div>
       </div>
@@ -223,8 +223,26 @@ function Footer() {
           <div><p className="eyebrow text-signal">Let’s connect</p><h2 className="font-display mt-5 max-w-3xl text-4xl leading-tight md:text-6xl">Looking for an MIS professional who understands both technology and operations?</h2></div>
           <div className="space-y-4 text-sm"><a href="mailto:victortnguyen18@gmail.com" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 transition-opacity hover:opacity-70"><Mail size={18} />victortnguyen18@gmail.com <ArrowUpRight className="ml-auto" size={16} /></a><a href="tel:+16512026997" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 transition-opacity hover:opacity-70">(651) 202-6997 <ArrowUpRight className="ml-auto" size={16} /></a><p className="flex items-center gap-3 text-primary-foreground/60"><MapPin size={18} />Twin Cities Area, MN</p></div>
         </div>
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-primary-foreground/20 pt-6 text-xs text-primary-foreground/50"><p>© 2026 Victor Nguyen</p><a href="/Victor-Nguyen-Resume.pdf" download="Victor-Nguyen-Resume.pdf" className="inline-flex items-center gap-2 hover:text-primary-foreground">Download résumé <Download size={14} /></a></div>
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-primary-foreground/20 pt-6 text-xs text-primary-foreground/50"><p>© 2026 Victor Nguyen</p><a href="/Victor-Nguyen-Resume.pdf" download="Victor-Nguyen-Resume.pdf" onClick={downloadResume} className="inline-flex items-center gap-2 hover:text-primary-foreground">Download résumé <Download size={14} /></a></div>
       </div>
     </footer>
   );
+}
+
+async function downloadResume(e: React.MouseEvent<HTMLAnchorElement>) {
+  e.preventDefault();
+  try {
+    const res = await fetch("/Victor-Nguyen-Resume.pdf", { credentials: "include" });
+    if (!res.ok) throw new Error();
+    const url = URL.createObjectURL(await res.blob());
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Victor-Nguyen-Resume.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  } catch {
+    window.location.href = "/Victor-Nguyen-Resume.pdf";
+  }
 }
