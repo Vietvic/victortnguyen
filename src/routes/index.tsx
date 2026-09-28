@@ -1,145 +1,108 @@
 import { createFileRoute } from "@tanstack/react-router";
-import deskStillLife from "@/assets/desk-still-life.jpg";
+import { ArrowDown, ArrowUpRight, Download, Mail, MapPin } from "lucide-react";
+import misWorkspace from "@/assets/mis-workspace.jpg";
+import resumeAsset from "@/assets/victor-nguyen-cv.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Elena Marsh — Writer & Brand Consultant" },
-      {
-        name: "description",
-        content:
-          "Elena Marsh is a writer and brand consultant helping thoughtful companies find their voice through essays, brand narratives, and editorial strategy.",
-      },
-      { property: "og:title", content: "Elena Marsh — Writer & Brand Consultant" },
-      {
-        property: "og:description",
-        content:
-          "Essays, brand narratives, and editorial strategy for thoughtful companies.",
-      },
+      { title: "Victor Nguyen — Management Information Systems" },
+      { name: "description", content: "Victor Nguyen is an MIS professional in Minnesota with experience across systems administration, business operations, data, cybersecurity, and program management." },
+      { property: "og:title", content: "Victor Nguyen — Management Information Systems" },
+      { property: "og:description", content: "Systems, operations, data, and cybersecurity experience focused on practical business outcomes." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Elena Marsh — Writer & Brand Consultant" },
-      {
-        name: "twitter:description",
-        content:
-          "Essays, brand narratives, and editorial strategy for thoughtful companies.",
-      },
+      { name: "twitter:title", content: "Victor Nguyen — Management Information Systems" },
+      { name: "twitter:description", content: "Systems, operations, data, and cybersecurity experience focused on practical business outcomes." },
     ],
   }),
   component: Index,
 });
 
-const NAV = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
-];
-
-const WRITING = [
+const EXPERIENCE = [
   {
-    kicker: "Essay",
-    title: "The Quiet Power of Saying Less",
-    blurb:
-      "Why the most persuasive brands whisper — and what happens to the ones that shout.",
-    pub: "The Ledger Review",
-    year: "2026",
+    dates: "2026 — Present",
+    role: "Programs Manager",
+    company: "FRAYEO · Volunteer",
+    summary: "Coordinate workforce development, digital literacy, career events, and community programs across partners, participants, and internal teams.",
+    points: [
+      "Manage schedules, documentation, participant information, follow-up, and project deliverables.",
+      "Implemented Monday.com, Google Calendar, database workflows, and online scheduling to improve organization and capacity.",
+      "Support information systems, website and database activities, and operational improvements.",
+    ],
   },
   {
-    kicker: "Case study",
-    title: "Rebuilding a Voice for Fern & Field",
-    blurb:
-      "A heritage outdoor brand had a loyal following and nothing to say. Here's how we found its voice again.",
-    pub: "Client work",
-    year: "2025",
+    dates: "2026",
+    role: "Workforce & Digital Literacy Coordinator",
+    company: "FRAYEO · Contract",
+    summary: "Designed and launched a four-week technology program with beginner, intermediate, and advanced learning levels.",
+    points: [
+      "Delivered practical training in computer skills, cybersecurity, AI tools, job-search technology, and productivity software.",
+      "Coordinated outreach, enrollment, schedules, materials, job fairs, and workforce partnerships.",
+    ],
   },
   {
-    kicker: "Essay",
-    title: "Notes on Writing for People Who Skim",
-    blurb:
-      "Attention is not a moral failing. A working method for clarity without condescension.",
-    pub: "Substack",
-    year: "2025",
+    dates: "2024 — 2026",
+    role: "Operations / Systems Administrator",
+    company: "Stauer",
+    summary: "Resolved technical and operational issues across CRM, database, payment, and business workflows.",
+    points: [
+      "Maintained Maximizer CRM and Hyperion data and produced Excel and Hyperion reports.",
+      "Collaborated with IT, sales, customer service, and vendors to document issues and improve workflows.",
+    ],
   },
   {
-    kicker: "Case study",
-    title: "The Six-Word Positioning Workshop",
-    blurb:
-      "How three founders, one whiteboard, and a hard deadline produced a strategy everyone could repeat.",
-    pub: "Client work",
-    year: "2024",
-  },
-];
-
-const SERVICES = [
-  {
-    title: "Brand narrative",
-    body: "A complete story system — positioning, voice, and messaging your whole team can actually use, delivered as a working document rather than a PDF that dies in a drive.",
-  },
-  {
-    title: "Editorial strategy",
-    body: "A publishing plan built around what you believe, not what an algorithm wants. Includes formats, cadence, and the first month of pieces written.",
-  },
-  {
-    title: "Writing & ghostwriting",
-    body: "Essays, founder letters, and long-form pieces written in your name and your register — researched, drafted, and revised until it sounds inevitable.",
+    dates: "2020 — 2024",
+    role: "Manager",
+    company: "Nails & Spa",
+    summary: "Managed daily operations in a fast-paced service business, balancing staff, customers, vendors, inventory, schedules, and finances.",
+    points: [],
   },
 ];
 
-const TESTIMONIALS = [
-  {
-    quote:
-      "Elena didn't give us copy. She gave us a way of talking about ourselves that we still use in every pitch, two years later.",
-    name: "Priya Raman",
-    role: "Co-founder, Fern & Field",
-  },
-  {
-    quote:
-      "The rare consultant who writes beautifully and thinks like an operator. Our launch essay outperformed every ad we've ever run.",
-    name: "Daniel Okafor",
-    role: "CEO, Ledger & Co.",
-  },
+const PROJECTS = [
+  { number: "01", category: "Systems implementation", title: "FRAYEO Digital Literacy Program", body: "Planned and implemented a four-week community technology program, coordinating curriculum, schedules, participants, materials, classroom support, and follow-up. Integrated Northstar concepts with current workplace technology, cybersecurity, AI, and career-readiness topics.", tools: ["Program planning", "Training", "Process design"] },
+  { number: "02", category: "Application & data", title: "Friendsfy Application", body: "Developed a Spotify-focused social application with an emphasis on backend logic and database management, connecting stored account data to the application experience.", tools: ["Java", "SQL", "SpringToolSuite", "Android Studio"] },
+  { number: "03", category: "Infrastructure", title: "Home Server & Networking", body: "Built and secured a Linux home server for file storage, media, applications, and remote access. Applied firewalls, encrypted communication, public-key authentication, containerization, and data redundancy.", tools: ["Linux", "Docker", "SSH", "SQL", "RAID"] },
+  { number: "04", category: "Risk & security", title: "Medical Devices Risk Assessment", body: "Assessed vulnerabilities, threats, controls, likelihood, impact, and risk-treatment options for medical-device environments, then documented practical recommendations.", tools: ["Risk assessment", "Controls", "Documentation"] },
+  { number: "05", category: "Security assessment", title: "DataKing Penetration Test", body: "Conducted a structured external security assessment, identified weaknesses including password and authentication gaps, and documented remediation recommendations.", tools: ["NIST SP 800-115", "OWASP", "Vulnerability scanning"] },
+  { number: "06", category: "Product collaboration", title: "College Budgeting System", body: "Collaborated at a U.S. Bank-sponsored AI hackathon on a responsive budgeting website for college students, including questionnaire design, input validation, and data collection.", tools: ["HTML", "CSS", "JavaScript", "Validation"] },
+];
+
+const SKILLS = [
+  { title: "Information systems & data", items: "Microsoft Excel · Google Workspace · Monday.com · Maximizer CRM · Hyperion · ZOHO · SQL · Database management · Reporting" },
+  { title: "Projects & operations", items: "Project coordination · Program management · Requirements analysis · Process improvement · Stakeholder management · Documentation · Risk management" },
+  { title: "Cybersecurity & infrastructure", items: "NIST frameworks · Risk assessment · Wireshark · Nessus · OpenVAS · Snort · Linux · Windows Server · Networking · SSH" },
+  { title: "Development", items: "Python · Java · C · SQL · HTML/CSS/JavaScript · Shell scripting · SpringToolSuite · Android Studio" },
 ];
 
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
+      <Header />
       <main>
         <Hero />
-        <SelectedWork />
-        <About />
-        <Services />
-        <Testimonials />
+        <ProfileStrip />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Education />
       </main>
       <Footer />
     </div>
   );
 }
 
-function SiteHeader() {
+function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-display text-xl tracking-tight">
-          Elena Marsh
-        </a>
-        <nav className="flex items-center gap-6">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="link-underline link-underline-hover hidden text-sm text-muted-foreground transition-colors hover:text-foreground sm:inline"
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            className="rounded-sm bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85 sm:hidden"
-          >
-            Contact
-          </a>
+    <header className="absolute inset-x-0 top-0 z-50 border-b border-primary-foreground/15 text-primary-foreground">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
+        <a href="#top" className="font-display text-lg">VN<span className="text-signal">.</span></a>
+        <nav aria-label="Main navigation" className="flex items-center gap-5 text-xs font-semibold md:gap-8 md:text-sm">
+          <a href="#experience" className="hidden transition-opacity hover:opacity-70 sm:block">Experience</a>
+          <a href="#projects" className="hidden transition-opacity hover:opacity-70 sm:block">Projects</a>
+          <a href="#skills" className="hidden transition-opacity hover:opacity-70 sm:block">Skills</a>
+          <a href={`mailto:${"victortnguyen18@gmail.com"}`} className="border border-primary-foreground/40 px-4 py-2.5 transition-colors hover:bg-primary-foreground hover:text-primary">Contact</a>
         </nav>
       </div>
     </header>
@@ -148,134 +111,29 @@ function SiteHeader() {
 
 function Hero() {
   return (
-    <section id="top" className="mx-auto max-w-5xl px-6 pt-20 pb-24 md:pt-28 md:pb-32">
-      <div className="grid items-center gap-14 md:grid-cols-[1.2fr_1fr]">
-        <div>
-          <p className="eyebrow animate-rise">Writer &amp; brand consultant</p>
-          <h1 className="font-display mt-5 animate-rise-delay-1 text-5xl leading-[1.08] tracking-tight text-balance md:text-7xl">
-            Words that make thoughtful companies{" "}
-            <span className="italic text-accent">impossible to ignore.</span>
+    <section id="top" className="relative flex min-h-[680px] items-end overflow-hidden bg-primary text-primary-foreground md:min-h-[760px]">
+      <img src={misWorkspace} alt="Information systems workspace with process maps, network equipment, and data dashboards" width={1600} height={1000} className="absolute inset-0 size-full object-cover object-[65%_center]" />
+      <div className="bg-hero-scrim absolute inset-0" />
+      <div className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-36 md:px-8 md:pb-20">
+        <div className="max-w-3xl">
+          <div className="animate-rise mb-8 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-normal text-primary-foreground/75">
+            <span className="bg-signal h-2 w-2" />
+            Twin Cities, Minnesota
+            <span className="text-primary-foreground/35">/</span>
+            U.S. Citizen
+          </div>
+          <h1 className="font-display animate-rise-delay-1 text-5xl leading-[1.04] sm:text-6xl md:text-7xl lg:text-8xl">
+            Victor Nguyen
           </h1>
-          <p className="mt-7 max-w-md animate-rise-delay-2 text-base leading-relaxed text-muted-foreground md:text-lg">
-            I'm a writer and brand consultant. I help founders and teams find
-            the story they already have — then say it with clarity, restraint,
-            and a little warmth.
+          <p className="animate-rise-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/85 md:text-2xl">
+            Connecting systems, data, and people to make organizations work better.
           </p>
-          <div className="mt-9 flex flex-wrap items-center gap-4 animate-rise-delay-3">
-            <a
-              href="#contact"
-              className="rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
-            >
-              Start a conversation
-            </a>
-            <a
-              href="#work"
-              className="link-underline link-underline-hover rounded-sm px-2 py-3 text-sm font-medium"
-            >
-              Read selected work
-            </a>
-          </div>
-        </div>
-        <div className="animate-rise-delay-2">
-          <img
-            src={deskStillLife}
-            alt="Manuscript pages and a fountain pen on a sunlit wooden desk"
-            width={1056}
-            height={1408}
-            className="aspect-[3/4] w-full rounded-md border border-border/60 object-cover"
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SectionHeading({
-  eyebrow,
-  title,
-}: {
-  eyebrow: string;
-  title: string;
-}) {
-  return (
-    <div className="max-w-2xl">
-      <p className="eyebrow">{eyebrow}</p>
-      <h2 className="font-display mt-4 text-4xl tracking-tight text-balance md:text-5xl">
-        {title}
-      </h2>
-    </div>
-  );
-}
-
-function SelectedWork() {
-  return (
-    <section id="work" className="border-t border-border/60 bg-card/50">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <SectionHeading
-          eyebrow="Selected work"
-          title="Essays and case studies"
-        />
-        <div className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2">
-          {WRITING.map((piece) => (
-            <article key={piece.title} className="group">
-              <div className="flex items-baseline justify-between gap-4">
-                <p className="eyebrow text-accent">{piece.kicker}</p>
-                <p className="text-xs text-muted-foreground">{piece.year}</p>
-              </div>
-              <h3 className="font-display mt-3 text-2xl leading-snug tracking-tight transition-colors group-hover:text-accent md:text-[1.75rem]">
-                <a href="#contact" className="link-underline link-underline-hover">
-                  {piece.title}
-                </a>
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {piece.blurb}
-              </p>
-              <p className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                {piece.pub}
-              </p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function About() {
-  return (
-    <section id="about" className="border-t border-border/60">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <div className="grid gap-14 md:grid-cols-[1fr_1.4fr] md:gap-20">
-          <SectionHeading eyebrow="About" title="A brief biography" />
-          <div className="space-y-6 text-base leading-relaxed text-muted-foreground md:text-lg">
-            <p>
-              For the past decade I've written for magazines, founded brands,
-              and sat on both sides of the editor's desk. Somewhere between the
-              two, I found the work I love most: helping companies say what
-              they mean.
-            </p>
-            <p>
-              My clients range from seed-stage founders to hundred-year-old
-              institutions. What they share is a belief that clarity is a
-              competitive advantage — and that the right sentence, in the right
-              place, can change how a whole company behaves.
-            </p>
-            <p>
-              I write a weekly letter on language and business, advise three
-              clients at a time, and live in Chicago with a small dog and a
-              large dictionary.
-            </p>
-            <div className="flex flex-wrap gap-x-8 gap-y-2 pt-2 text-sm">
-              <a href="#contact" className="link-underline link-underline-hover font-medium text-foreground">
-                Weekly letter
-              </a>
-              <a href="#contact" className="link-underline link-underline-hover font-medium text-foreground">
-                LinkedIn
-              </a>
-              <a href="#contact" className="link-underline link-underline-hover font-medium text-foreground">
-                Speaking inquiries
-              </a>
-            </div>
+          <p className="animate-rise-delay-2 mt-5 max-w-xl text-sm leading-relaxed text-primary-foreground/65 md:text-base">
+            Management Information Systems professional with experience across systems administration, business operations, cybersecurity, and program delivery.
+          </p>
+          <div className="animate-rise-delay-3 mt-9 flex flex-wrap gap-3">
+            <a href="#projects" className="bg-signal inline-flex items-center gap-2 px-5 py-3 text-sm font-bold text-primary transition-opacity hover:opacity-90">View selected projects <ArrowDown size={16} /></a>
+            <a href={resumeAsset.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border border-primary-foreground/35 px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary-foreground hover:text-primary">Résumé <Download size={16} /></a>
           </div>
         </div>
       </div>
@@ -283,51 +141,75 @@ function About() {
   );
 }
 
-function Services() {
+function ProfileStrip() {
   return (
-    <section id="services" className="border-t border-border/60 bg-card/50">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <SectionHeading
-          eyebrow="Services"
-          title="Three ways we can work together"
-        />
-        <div className="mt-14 grid gap-10 md:grid-cols-3">
-          {SERVICES.map((service, i) => (
-            <div key={service.title} className="border-t-2 border-foreground/80 pt-6">
-              <p className="font-display text-3xl text-accent">0{i + 1}</p>
-              <h3 className="font-display mt-3 text-2xl tracking-tight">
-                {service.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {service.body}
-              </p>
-            </div>
-          ))}
+    <section aria-label="Professional profile" className="border-b border-border bg-card">
+      <div className="mx-auto grid max-w-6xl md:grid-cols-3">
+        <div className="border-b border-border px-5 py-8 md:border-b-0 md:border-r md:px-8"><p className="eyebrow">Current study</p><p className="mt-2 font-display text-lg">M.S. Management Information Systems</p><p className="mt-1 text-sm text-muted-foreground">Metropolitan State University · 4.0 GPA</p></div>
+        <div className="border-b border-border px-5 py-8 md:border-b-0 md:border-r md:px-8"><p className="eyebrow">Core perspective</p><p className="mt-2 font-display text-lg">Technology meets operations</p><p className="mt-1 text-sm text-muted-foreground">Systems · Data · Process · Security</p></div>
+        <div className="px-5 py-8 md:px-8"><p className="eyebrow">Leadership</p><p className="mt-2 font-display text-lg">Vice President, AIS</p><p className="mt-1 text-sm text-muted-foreground">Student chapter · Current</p></div>
+      </div>
+    </section>
+  );
+}
+
+function SectionIntro({ label, title, text }: { label: string; title: string; text: string }) {
+  return <div className="grid gap-5 border-b border-border pb-10 md:grid-cols-[1fr_2fr]"><p className="eyebrow text-accent">{label}</p><div><h2 className="font-display text-3xl md:text-5xl">{title}</h2><p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">{text}</p></div></div>;
+}
+
+function Experience() {
+  return (
+    <section id="experience" className="scroll-mt-20">
+      <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+        <SectionIntro label="Experience" title="Systems thinking in practice." text="A progression from hands-on business operations to technology-supported workflows, cross-functional systems work, and program leadership." />
+        <div>
+          {EXPERIENCE.map((item) => <article key={`${item.role}-${item.company}`} className="grid gap-5 border-b border-border py-10 md:grid-cols-[1fr_2fr]">
+            <div><p className="text-sm font-semibold text-accent">{item.dates}</p><p className="mt-2 text-sm text-muted-foreground">{item.company}</p></div>
+            <div><h3 className="font-display text-2xl">{item.role}</h3><p className="mt-3 leading-relaxed">{item.summary}</p>{item.points.length > 0 && <ul className="mt-5 space-y-2 text-sm leading-relaxed text-muted-foreground">{item.points.map((point) => <li key={point} className="flex gap-3"><span className="bg-signal mt-2 h-1.5 w-1.5 shrink-0" />{point}</li>)}</ul>}</div>
+          </article>)}
         </div>
       </div>
     </section>
   );
 }
 
-function Testimonials() {
+function Projects() {
   return (
-    <section className="border-t border-border/60">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <div className="grid gap-12 md:grid-cols-2">
-          {TESTIMONIALS.map((t) => (
-            <figure key={t.name}>
-              <blockquote className="font-display text-2xl leading-snug tracking-tight text-balance md:text-[1.6rem]">
-                <span className="text-accent">&ldquo;</span>
-                {t.quote}
-                <span className="text-accent">&rdquo;</span>
-              </blockquote>
-              <figcaption className="mt-5 text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">{t.name}</span>
-                {" · "}
-                {t.role}
-              </figcaption>
-            </figure>
-          ))}
+    <section id="projects" className="scroll-mt-20 bg-primary text-primary-foreground">
+      <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+        <div className="grid gap-5 border-b border-primary-foreground/20 pb-10 md:grid-cols-[1fr_2fr]"><p className="eyebrow text-signal">Selected projects</p><div><h2 className="font-display text-3xl md:text-5xl">Built, assessed, and improved.</h2><p className="mt-4 max-w-2xl leading-relaxed text-primary-foreground/65">Coursework and community initiatives that show how I approach information systems: understand the need, organize the work, and deliver a usable result.</p></div></div>
+        <div className="grid md:grid-cols-2">
+          {PROJECTS.map((project, index) => <article key={project.number} className={`border-b border-primary-foreground/20 py-10 md:px-8 ${index % 2 === 0 ? "md:border-r md:pl-0" : "md:pr-0"}`}>
+            <div className="flex items-center justify-between"><span className="font-display text-3xl text-signal">{project.number}</span><span className="text-xs font-semibold uppercase text-primary-foreground/50">{project.category}</span></div>
+            <h3 className="font-display mt-8 text-2xl">{project.title}</h3><p className="mt-4 text-sm leading-relaxed text-primary-foreground/65">{project.body}</p>
+            <div className="mt-6 flex flex-wrap gap-2">{project.tools.map((tool) => <span key={tool} className="border border-primary-foreground/20 px-2.5 py-1 text-xs text-primary-foreground/70">{tool}</span>)}</div>
+          </article>)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Skills() {
+  return (
+    <section id="skills" className="scroll-mt-20 bg-card">
+      <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+        <SectionIntro label="Capabilities" title="A broad technical toolkit." text="Comfortable moving between business needs, structured data, operational systems, technical teams, and the people who rely on them." />
+        <div className="grid md:grid-cols-2">{SKILLS.map((skill, index) => <div key={skill.title} className={`border-b border-border py-9 md:px-8 ${index % 2 === 0 ? "md:border-r md:pl-0" : "md:pr-0"}`}><h3 className="font-display text-xl">{skill.title}</h3><p className="mt-4 text-sm leading-7 text-muted-foreground">{skill.items}</p></div>)}</div>
+      </div>
+    </section>
+  );
+}
+
+function Education() {
+  return (
+    <section id="education" className="border-t border-border">
+      <div className="mx-auto grid max-w-6xl gap-14 px-5 py-20 md:grid-cols-[1fr_2fr] md:px-8 md:py-28">
+        <div><p className="eyebrow text-accent">Education & leadership</p><h2 className="font-display mt-5 text-3xl md:text-4xl">Learning with purpose.</h2></div>
+        <div className="space-y-9">
+          <div className="border-l-4 border-accent pl-6"><p className="text-sm font-semibold text-accent">Current · GPA 4.0</p><h3 className="font-display mt-2 text-2xl">M.S. Management Information Systems</h3><p className="mt-1 text-muted-foreground">Metropolitan State University</p></div>
+          <div className="border-l-4 border-border pl-6"><p className="text-sm font-semibold text-muted-foreground">2024 · GPA 3.6</p><h3 className="font-display mt-2 text-2xl">B.S. Cybersecurity</h3><p className="mt-1 text-muted-foreground">Metropolitan State University</p></div>
+          <div className="border-t border-border pt-8"><p className="text-sm font-semibold text-accent">Vice President · Current</p><h3 className="font-display mt-2 text-xl">Association for Information Systems Student Chapter</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Collaborate with the executive board to plan projects, workshops, networking events, professional-development activities, member engagement, and stakeholder communication.</p></div>
         </div>
       </div>
     </section>
@@ -336,27 +218,13 @@ function Testimonials() {
 
 function Footer() {
   return (
-    <footer id="contact" className="border-t border-border/60 bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <p className="eyebrow text-primary-foreground/60">Contact</p>
-        <h2 className="font-display mt-5 max-w-2xl text-4xl leading-[1.1] tracking-tight text-balance md:text-6xl">
-          Have something worth saying?{" "}
-          <span className="italic opacity-70">Let's write it well.</span>
-        </h2>
-        <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-3 text-sm">
-          <a
-            href="mailto:hello@example.com"
-            className="link-underline link-underline-hover font-medium"
-          >
-            hello@example.com
-          </a>
-          <a href="#top" className="link-underline link-underline-hover font-medium">
-            Back to top
-          </a>
+    <footer id="contact" className="bg-primary text-primary-foreground">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
+        <div className="grid gap-10 md:grid-cols-[2fr_1fr] md:items-end">
+          <div><p className="eyebrow text-signal">Let’s connect</p><h2 className="font-display mt-5 max-w-3xl text-4xl leading-tight md:text-6xl">Looking for an MIS professional who understands both technology and operations?</h2></div>
+          <div className="space-y-4 text-sm"><a href="mailto:victortnguyen18@gmail.com" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 transition-opacity hover:opacity-70"><Mail size={18} />victortnguyen18@gmail.com <ArrowUpRight className="ml-auto" size={16} /></a><a href="tel:+16512026997" className="flex items-center gap-3 border-b border-primary-foreground/20 pb-4 transition-opacity hover:opacity-70">(651) 202-6997 <ArrowUpRight className="ml-auto" size={16} /></a><p className="flex items-center gap-3 text-primary-foreground/60"><MapPin size={18} />Twin Cities Area, MN</p></div>
         </div>
-        <p className="mt-16 text-xs text-primary-foreground/50">
-          © 2026 Elena Marsh. All rights reserved.
-        </p>
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-primary-foreground/20 pt-6 text-xs text-primary-foreground/50"><p>© 2026 Victor Nguyen</p><a href={resumeAsset.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 hover:text-primary-foreground">Download résumé <Download size={14} /></a></div>
       </div>
     </footer>
   );
