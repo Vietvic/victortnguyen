@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight, Download, Mail, MapPin } from "lucide-react";
 import misWorkspace from "@/assets/mis-workspace.jpg";
-import resumeAsset from "@/assets/victor-nguyen-cv.pdf.asset.json";
+import resumeAsset from "@/assets/victor-nguyen-resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
