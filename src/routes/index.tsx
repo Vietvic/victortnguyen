@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight, Download, Mail, MapPin } from "lucide-react";
+import type React from "react";
 import misWorkspace from "@/assets/mis-workspace.jpg";
 
 export const Route = createFileRoute("/")({
