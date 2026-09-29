@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsDatakingSecurityAssessmentRouteImport } from './routes/projects.dataking-security-assessment'
 import { Route as ProjectsFrayeoDigitalLiteracyRouteImport } from './routes/projects.frayeo-digital-literacy'
 
 const IndexRoute = IndexRouteImport.update({
@@ -17,6 +18,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsDatakingSecurityAssessmentRoute =
+  ProjectsDatakingSecurityAssessmentRouteImport.update({
+    id: '/projects/dataking-security-assessment',
+    path: '/projects/dataking-security-assessment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProjectsFrayeoDigitalLiteracyRoute =
   ProjectsFrayeoDigitalLiteracyRouteImport.update({
     id: '/projects/frayeo-digital-literacy',
@@ -26,27 +33,41 @@ const ProjectsFrayeoDigitalLiteracyRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects/frayeo-digital-literacy'
+  fullPaths:
+    | '/'
+    | '/projects/dataking-security-assessment'
+    | '/projects/frayeo-digital-literacy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects/frayeo-digital-literacy'
-  id: '__root__' | '/' | '/projects/frayeo-digital-literacy'
+  to:
+    | '/'
+    | '/projects/dataking-security-assessment'
+    | '/projects/frayeo-digital-literacy'
+  id:
+    | '__root__'
+    | '/'
+    | '/projects/dataking-security-assessment'
+    | '/projects/frayeo-digital-literacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjectsDatakingSecurityAssessmentRoute: typeof ProjectsDatakingSecurityAssessmentRoute
   ProjectsFrayeoDigitalLiteracyRoute: typeof ProjectsFrayeoDigitalLiteracyRoute
 }
 
@@ -57,6 +78,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/dataking-security-assessment': {
+      id: '/projects/dataking-security-assessment'
+      path: '/projects/dataking-security-assessment'
+      fullPath: '/projects/dataking-security-assessment'
+      preLoaderRoute: typeof ProjectsDatakingSecurityAssessmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/frayeo-digital-literacy': {
@@ -71,6 +99,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjectsDatakingSecurityAssessmentRoute:
+    ProjectsDatakingSecurityAssessmentRoute,
   ProjectsFrayeoDigitalLiteracyRoute: ProjectsFrayeoDigitalLiteracyRoute,
 }
 export const routeTree = rootRouteImport
