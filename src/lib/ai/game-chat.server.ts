@@ -21,7 +21,7 @@ Rules:
 - If asked about something off-topic, briefly steer back to the game. You can mention they can explore Victor's projects on the site. Never invent facts about Victor's work history.`;
 
 export async function handleGameChat(request: Request) {
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env['LOVABLE_API_KEY'];
   if (!apiKey) return Response.json({ error: "AI is not configured." }, { status: 500 });
 
   let messages: UIMessage[];
