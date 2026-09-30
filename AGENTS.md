@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the public portfolio as a single-page recruiter journey with anchored sections because fast scanning is the primary use case.
+- Use dedicated detail routes only for project case studies and substantive leadership stories because they need shareable context beyond homepage scanning.
