@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LeadershipAisRouteImport } from './routes/leadership.ais'
 import { Route as ProjectsCollegeBudgetingSystemRouteImport } from './routes/projects.college-budgeting-system'
 import { Route as ProjectsDatakingSecurityAssessmentRouteImport } from './routes/projects.dataking-security-assessment'
 import { Route as ProjectsFrayeoDigitalLiteracyRouteImport } from './routes/projects.frayeo-digital-literacy'
@@ -18,6 +19,11 @@ import { Route as ProjectsMedicalDeviceRiskAssessmentRouteImport } from './route
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeadershipAisRoute = LeadershipAisRouteImport.update({
+  id: '/leadership/ais',
+  path: '/leadership/ais',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsCollegeBudgetingSystemRoute =
@@ -47,6 +53,7 @@ const ProjectsMedicalDeviceRiskAssessmentRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/leadership/ais': typeof LeadershipAisRoute
   '/projects/college-budgeting-system': typeof ProjectsCollegeBudgetingSystemRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/leadership/ais': typeof LeadershipAisRoute
   '/projects/college-budgeting-system': typeof ProjectsCollegeBudgetingSystemRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
@@ -62,6 +70,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/leadership/ais': typeof LeadershipAisRoute
   '/projects/college-budgeting-system': typeof ProjectsCollegeBudgetingSystemRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
@@ -71,6 +80,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/leadership/ais'
     | '/projects/college-budgeting-system'
     | '/projects/dataking-security-assessment'
     | '/projects/frayeo-digital-literacy'
@@ -78,6 +88,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/leadership/ais'
     | '/projects/college-budgeting-system'
     | '/projects/dataking-security-assessment'
     | '/projects/frayeo-digital-literacy'
@@ -85,6 +96,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/leadership/ais'
     | '/projects/college-budgeting-system'
     | '/projects/dataking-security-assessment'
     | '/projects/frayeo-digital-literacy'
@@ -93,6 +105,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LeadershipAisRoute: typeof LeadershipAisRoute
   ProjectsCollegeBudgetingSystemRoute: typeof ProjectsCollegeBudgetingSystemRoute
   ProjectsDatakingSecurityAssessmentRoute: typeof ProjectsDatakingSecurityAssessmentRoute
   ProjectsFrayeoDigitalLiteracyRoute: typeof ProjectsFrayeoDigitalLiteracyRoute
@@ -106,6 +119,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leadership/ais': {
+      id: '/leadership/ais'
+      path: '/leadership/ais'
+      fullPath: '/leadership/ais'
+      preLoaderRoute: typeof LeadershipAisRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/college-budgeting-system': {
@@ -141,6 +161,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LeadershipAisRoute: LeadershipAisRoute,
   ProjectsCollegeBudgetingSystemRoute: ProjectsCollegeBudgetingSystemRoute,
   ProjectsDatakingSecurityAssessmentRoute:
     ProjectsDatakingSecurityAssessmentRoute,
