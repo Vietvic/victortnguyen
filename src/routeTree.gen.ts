@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsDatakingSecurityAssessmentRouteImport } from './routes/projects.dataking-security-assessment'
 import { Route as ProjectsFrayeoDigitalLiteracyRouteImport } from './routes/projects.frayeo-digital-literacy'
+import { Route as ProjectsMedicalDeviceRiskAssessmentRouteImport } from './routes/projects.medical-device-risk-assessment'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -30,22 +31,31 @@ const ProjectsFrayeoDigitalLiteracyRoute =
     path: '/projects/frayeo-digital-literacy',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ProjectsMedicalDeviceRiskAssessmentRoute =
+  ProjectsMedicalDeviceRiskAssessmentRouteImport.update({
+    id: '/projects/medical-device-risk-assessment',
+    path: '/projects/medical-device-risk-assessment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
+  '/projects/medical-device-risk-assessment': typeof ProjectsMedicalDeviceRiskAssessmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
+  '/projects/medical-device-risk-assessment': typeof ProjectsMedicalDeviceRiskAssessmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
+  '/projects/medical-device-risk-assessment': typeof ProjectsMedicalDeviceRiskAssessmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -53,22 +63,26 @@ export interface FileRouteTypes {
     | '/'
     | '/projects/dataking-security-assessment'
     | '/projects/frayeo-digital-literacy'
+    | '/projects/medical-device-risk-assessment'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/projects/dataking-security-assessment'
     | '/projects/frayeo-digital-literacy'
+    | '/projects/medical-device-risk-assessment'
   id:
     | '__root__'
     | '/'
     | '/projects/dataking-security-assessment'
     | '/projects/frayeo-digital-literacy'
+    | '/projects/medical-device-risk-assessment'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ProjectsDatakingSecurityAssessmentRoute: typeof ProjectsDatakingSecurityAssessmentRoute
   ProjectsFrayeoDigitalLiteracyRoute: typeof ProjectsFrayeoDigitalLiteracyRoute
+  ProjectsMedicalDeviceRiskAssessmentRoute: typeof ProjectsMedicalDeviceRiskAssessmentRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -94,6 +108,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsFrayeoDigitalLiteracyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/medical-device-risk-assessment': {
+      id: '/projects/medical-device-risk-assessment'
+      path: '/projects/medical-device-risk-assessment'
+      fullPath: '/projects/medical-device-risk-assessment'
+      preLoaderRoute: typeof ProjectsMedicalDeviceRiskAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -102,6 +123,8 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsDatakingSecurityAssessmentRoute:
     ProjectsDatakingSecurityAssessmentRoute,
   ProjectsFrayeoDigitalLiteracyRoute: ProjectsFrayeoDigitalLiteracyRoute,
+  ProjectsMedicalDeviceRiskAssessmentRoute:
+    ProjectsMedicalDeviceRiskAssessmentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
