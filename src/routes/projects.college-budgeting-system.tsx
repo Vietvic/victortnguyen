@@ -199,9 +199,9 @@ function CollegeBudgetingProject() {
       <TopBar />
       <main>
         <Hero />
+        <InteractiveDemo />
         <Overview />
         <Hackathon />
-        <InteractiveDemo />
         <Details />
         <Tags />
         <NextStep />
@@ -231,7 +231,7 @@ function Hero() {
         </Link>
         <p className="eyebrow text-signal mt-10">Case study · 06 · Product collaboration</p>
         <h1 className="font-display mt-4 max-w-4xl text-4xl leading-[1.08] sm:text-5xl md:text-6xl">
-          College Budgeting System
+          AI College Budgeting System
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">
           A hackathon-built budgeting website that helps students match a school to their finances — designed with generative AI and design thinking at the U.S. Bank + Code Savvy AI Challenge. Try the interactive version below.
@@ -273,7 +273,7 @@ function Hackathon() {
         <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
           <p className="eyebrow text-accent">The event</p>
           <div>
-            <h2 className="font-display text-3xl md:text-4xl">U.S. Bank + Code Savvy AI Challenge</h2>
+            <h2 className="font-display text-4xl leading-tight md:text-5xl">U.S. Bank + Code Savvy AI Challenge</h2>
             <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
               A half-day hackathon about learning generative AI and design thinking by doing. Participants got hands-on experience using AI to design a creative tech solution to a common financial situation faced by people every day — spending the day learning how generative AI and design thinking combine to brainstorm and build innovative solutions.
             </p>
@@ -326,7 +326,7 @@ function InteractiveDemo() {
         <div className="grid gap-5 border-b border-border pb-10 md:grid-cols-[1fr_2fr]">
           <p className="eyebrow text-accent">Try the idea</p>
           <div>
-            <h2 className="font-display text-3xl md:text-4xl">Answer four questions, get a school.</h2>
+            <h2 className="font-display text-4xl leading-tight md:text-5xl">Answer four questions, get a school.</h2>
             <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
               A working recreation of the questionnaire flow we designed at the hackathon. Pick a field of study and degree type, enter what you can spend per semester, and the site recommends the best-rated U.S. college that fits, plus other options to compare — using estimated tuition for demonstration purposes, not real quotes.
             </p>
