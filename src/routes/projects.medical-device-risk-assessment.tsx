@@ -146,7 +146,7 @@ function Hero() {
         <Link to="/" className="inline-flex items-center gap-2 text-xs font-semibold text-primary-foreground/70 transition-opacity hover:opacity-80 md:text-sm">
           <ArrowLeft size={15} /> Back to portfolio
         </Link>
-        <p className="eyebrow text-signal mt-10">Case study · 04 · Risk &amp; security</p>
+        <p className="eyebrow text-signal mt-10">Case study · 02 · Risk &amp; security</p>
         <h1 className="font-display mt-4 max-w-4xl text-4xl leading-[1.08] sm:text-5xl md:text-6xl">
           Medical Devices Risk Assessment
         </h1>
