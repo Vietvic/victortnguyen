@@ -98,7 +98,7 @@ const SCHOOLS: School[] = [
     location: "St. Paul & Minneapolis, MN",
     costPerSemester: 4200,
     degrees: ["Bachelor's", "Master's"],
-    fields: ["Business", "Computer Science & IT", "Healthcare & Nursing", "Criminal Justice" as Field, "Education", "Liberal Arts & Social Sciences"],
+    fields: ["Business", "Computer Science & IT", "Healthcare & Nursing", "Education", "Liberal Arts & Social Sciences"],
     note: "Urban state university built for working students — evening, weekend, and online options.",
   },
   {
