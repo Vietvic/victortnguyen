@@ -61,7 +61,7 @@ export function PortfolioNavigator() {
   };
 
   return (
-    <nav ref={containerRef} aria-label="Portfolio navigation" className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+    <nav ref={containerRef} aria-label="Portfolio navigation" className="sticky top-0 z-[100] border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-3 md:px-8">
         <Link to="/" aria-label="Victor Nguyen portfolio home" className="interactive-lift hidden shrink-0 border border-border bg-primary px-3 py-2 text-sm font-bold text-primary-foreground sm:inline-flex">
           VN<span className="text-signal">.</span>
