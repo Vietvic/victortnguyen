@@ -253,8 +253,8 @@ function NextStep() {
           <h2 className="font-display mt-4 max-w-2xl text-3xl leading-tight md:text-5xl">This program sat alongside my wider work at FRAYEO — systems, partnerships, and operations.</h2>
         </div>
         <div className="flex flex-wrap gap-3">
-          <Link to="/" className="bg-signal inline-flex items-center gap-2 px-5 py-3 text-sm font-bold text-primary transition-opacity hover:opacity-90">All projects <ArrowUpRight size={16} /></Link>
-          <a href={`mailto:${"victortnguyen18@gmail.com"}`} className="inline-flex items-center gap-2 border border-primary-foreground/35 px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary-foreground hover:text-primary"><Mail size={16} /> Contact me</a>
+          <Link to="/" className="bg-signal inline-flex items-center gap-3 px-7 py-4 text-base font-bold text-primary transition-opacity hover:opacity-90">All projects <ArrowUpRight size={20} /></Link>
+          <a href={`mailto:${"victortnguyen18@gmail.com"}`} className="inline-flex items-center gap-3 border border-primary-foreground/35 px-7 py-4 text-base font-semibold transition-colors hover:bg-primary-foreground hover:text-primary"><Mail size={20} /> Contact me</a>
         </div>
       </div>
     </section>
