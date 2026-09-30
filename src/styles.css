@@ -82,6 +82,32 @@
   ::selection {
     background-color: color-mix(in oklab, var(--accent) 22%, transparent);
   }
+
+  a[href],
+  button:not(:disabled) {
+    transform: translateY(0);
+    transition-property: transform, box-shadow, background-color, color, border-color, opacity;
+    transition-duration: 180ms;
+    transition-timing-function: ease-out;
+  }
+
+  a[href]:hover,
+  button:not(:disabled):hover,
+  a[href]:focus-visible,
+  button:not(:disabled):focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 color-mix(in oklab, var(--primary) 18%, transparent);
+  }
+
+  a[href]:focus-visible,
+  button:not(:disabled):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+@utility interactive-lift {
+  isolation: isolate;
 }
 
 @utility font-display {
@@ -124,6 +150,12 @@
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  a[href],
+  button:not(:disabled) { transition: none; }
+  a[href]:hover,
+  button:not(:disabled):hover,
+  a[href]:focus-visible,
+  button:not(:disabled):focus-visible { transform: none; }
   .animate-rise,
   .animate-rise-delay-1,
   .animate-rise-delay-2,
