@@ -11,3 +11,4 @@
 - [x] Add a page dropdown linking to every detail page.
 - [x] Add a consistent lift effect to working buttons and links.
 - [x] Verify navigation, search, and hover behavior on desktop and mobile.
+- [ ] Restyle page CTA buttons and the floating game button: bigger, more eye-catching (user picked CTA scope, then extended to both)
