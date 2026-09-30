@@ -85,8 +85,8 @@
 
   a[href],
   button:not(:disabled) {
-    transform: translateY(0);
-    transition-property: transform, box-shadow, background-color, color, border-color, opacity;
+    translate: 0 0;
+    transition-property: translate, box-shadow, background-color, color, border-color, opacity;
     transition-duration: 180ms;
     transition-timing-function: ease-out;
   }
@@ -95,7 +95,7 @@
   button:not(:disabled):hover,
   a[href]:focus-visible,
   button:not(:disabled):focus-visible {
-    transform: translateY(-3px);
+    translate: 0 -3px;
     box-shadow: 0 7px 0 color-mix(in oklab, var(--primary) 18%, transparent);
   }
 
@@ -155,7 +155,7 @@
   a[href]:hover,
   button:not(:disabled):hover,
   a[href]:focus-visible,
-  button:not(:disabled):focus-visible { transform: none; }
+  button:not(:disabled):focus-visible { translate: 0 0; }
   .animate-rise,
   .animate-rise-delay-1,
   .animate-rise-delay-2,

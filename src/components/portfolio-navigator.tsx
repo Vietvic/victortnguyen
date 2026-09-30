@@ -23,7 +23,7 @@ export function PortfolioNavigator() {
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [pagesOpen, setPagesOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
 
   const results = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -93,7 +93,7 @@ export function PortfolioNavigator() {
                 <Link
                   key={`${item.to}-${"hash" in item ? item.hash : item.label}`}
                   to={item.to}
-                  hash={"hash" in item ? item.hash : undefined}
+                  {...("hash" in item ? { hash: item.hash } : {})}
                   onClick={closeAll}
                   className="group block border-t border-border px-3 py-3 transition-colors first:border-t-0 hover:bg-muted focus-visible:bg-muted focus-visible:outline-none"
                 >
