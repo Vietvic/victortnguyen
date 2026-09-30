@@ -6,13 +6,13 @@ import { useState } from "react";
 export const Route = createFileRoute("/projects/college-budgeting-system")({
   head: () => ({
     meta: [
-      { title: "College Budgeting System — Victor Nguyen" },
-      { name: "description", content: "Case study: a college budgeting website built at the U.S. Bank + Code Savvy AI Challenge, applying generative AI and design thinking to a common financial situation — plus an interactive demo of the idea." },
-      { property: "og:title", content: "College Budgeting System — Victor Nguyen" },
+      { title: "AI College Budgeting System — Victor Nguyen" },
+      { name: "description", content: "Case study: an AI college budgeting website built at the U.S. Bank + Code Savvy AI Challenge, applying generative AI and design thinking to a common financial situation — plus an interactive demo of the idea." },
+      { property: "og:title", content: "AI College Budgeting System — Victor Nguyen" },
       { property: "og:description", content: "Generative AI and design thinking applied to college budgeting at a U.S. Bank–sponsored hackathon — with a working demo you can try." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "College Budgeting System — Victor Nguyen" },
+      { name: "twitter:title", content: "AI College Budgeting System — Victor Nguyen" },
       { name: "twitter:description", content: "Generative AI and design thinking applied to college budgeting at a U.S. Bank–sponsored hackathon — with a working demo you can try." },
     ],
   }),
