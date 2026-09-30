@@ -68,7 +68,6 @@ const TAGS = [
 function FrayeoProject() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <TopBar />
       <main>
         <Hero />
         <Overview />

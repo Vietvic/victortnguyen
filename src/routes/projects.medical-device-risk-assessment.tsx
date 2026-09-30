@@ -113,7 +113,6 @@ const TAGS = [
 function MedTechRiskProject() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <TopBar />
       <main>
         <Hero />
         <Overview />

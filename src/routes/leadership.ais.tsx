@@ -45,7 +45,6 @@ const RESPONSIBILITIES = [
 function AisLeadershipPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <TopBar />
       <main>
         <Hero />
         <About />

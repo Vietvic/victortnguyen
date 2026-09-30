@@ -196,7 +196,6 @@ function formatMoney(value: number): string {
 function CollegeBudgetingProject() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <TopBar />
       <main>
         <Hero />
         <InteractiveDemo />
