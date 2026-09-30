@@ -88,7 +88,7 @@ function ChatWindow({ initial, onClose, onReset }: { initial: UIMessage[]; onClo
                 <MessageContent className={m.role === "user" ? "bg-primary text-primary-foreground" : "bg-transparent p-0 text-foreground"}>
                   {m.parts.map((part, i) =>
                     part.type === "text" ? (
-                      m.role === "assistant" ? <MessageResponse key={i}>{part.text}</MessageResponse> : <span key={i}>{part.text}</span>
+                      m.role === "assistant" ? <MessageResponse key={i} className="[&_ol]:list-decimal [&_ol]:pl-5 [&_ul]:list-disc [&_ul]:pl-5">{part.text}</MessageResponse> : <span key={i}>{part.text}</span>
                     ) : null,
                   )}
                 </MessageContent>

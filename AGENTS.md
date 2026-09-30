@@ -11,3 +11,4 @@
 
 - Keep the public portfolio as a single-page recruiter journey with anchored sections because fast scanning is the primary use case.
 - Use dedicated detail routes only for project case studies and substantive leadership stories because they need shareable context beyond homepage scanning.
+- The floating two-truths game chat streams from /api/game-chat and stores its single conversation in browser localStorage, because it's a light entertainment feature with no accounts.
