@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsCollegeBudgetingSystemRouteImport } from './routes/projects.college-budgeting-system'
 import { Route as ProjectsDatakingSecurityAssessmentRouteImport } from './routes/projects.dataking-security-assessment'
 import { Route as ProjectsFrayeoDigitalLiteracyRouteImport } from './routes/projects.frayeo-digital-literacy'
 import { Route as ProjectsMedicalDeviceRiskAssessmentRouteImport } from './routes/projects.medical-device-risk-assessment'
@@ -19,6 +20,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsCollegeBudgetingSystemRoute =
+  ProjectsCollegeBudgetingSystemRouteImport.update({
+    id: '/projects/college-budgeting-system',
+    path: '/projects/college-budgeting-system',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProjectsDatakingSecurityAssessmentRoute =
   ProjectsDatakingSecurityAssessmentRouteImport.update({
     id: '/projects/dataking-security-assessment',
@@ -40,12 +47,14 @@ const ProjectsMedicalDeviceRiskAssessmentRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/projects/college-budgeting-system': typeof ProjectsCollegeBudgetingSystemRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
   '/projects/medical-device-risk-assessment': typeof ProjectsMedicalDeviceRiskAssessmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/projects/college-budgeting-system': typeof ProjectsCollegeBudgetingSystemRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
   '/projects/medical-device-risk-assessment': typeof ProjectsMedicalDeviceRiskAssessmentRoute
@@ -53,6 +62,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/projects/college-budgeting-system': typeof ProjectsCollegeBudgetingSystemRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
   '/projects/frayeo-digital-literacy': typeof ProjectsFrayeoDigitalLiteracyRoute
   '/projects/medical-device-risk-assessment': typeof ProjectsMedicalDeviceRiskAssessmentRoute
@@ -61,18 +71,21 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/projects/college-budgeting-system'
     | '/projects/dataking-security-assessment'
     | '/projects/frayeo-digital-literacy'
     | '/projects/medical-device-risk-assessment'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/projects/college-budgeting-system'
     | '/projects/dataking-security-assessment'
     | '/projects/frayeo-digital-literacy'
     | '/projects/medical-device-risk-assessment'
   id:
     | '__root__'
     | '/'
+    | '/projects/college-budgeting-system'
     | '/projects/dataking-security-assessment'
     | '/projects/frayeo-digital-literacy'
     | '/projects/medical-device-risk-assessment'
@@ -80,6 +93,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjectsCollegeBudgetingSystemRoute: typeof ProjectsCollegeBudgetingSystemRoute
   ProjectsDatakingSecurityAssessmentRoute: typeof ProjectsDatakingSecurityAssessmentRoute
   ProjectsFrayeoDigitalLiteracyRoute: typeof ProjectsFrayeoDigitalLiteracyRoute
   ProjectsMedicalDeviceRiskAssessmentRoute: typeof ProjectsMedicalDeviceRiskAssessmentRoute
@@ -92,6 +106,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/college-budgeting-system': {
+      id: '/projects/college-budgeting-system'
+      path: '/projects/college-budgeting-system'
+      fullPath: '/projects/college-budgeting-system'
+      preLoaderRoute: typeof ProjectsCollegeBudgetingSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/dataking-security-assessment': {
@@ -120,6 +141,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjectsCollegeBudgetingSystemRoute: ProjectsCollegeBudgetingSystemRoute,
   ProjectsDatakingSecurityAssessmentRoute:
     ProjectsDatakingSecurityAssessmentRoute,
   ProjectsFrayeoDigitalLiteracyRoute: ProjectsFrayeoDigitalLiteracyRoute,
