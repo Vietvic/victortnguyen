@@ -33,15 +33,12 @@ export async function handleGameChat(request: Request) {
     return Response.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const history: ModelMessage[] = [
-    { role: "system", content: SYSTEM_PROMPT },
-    ...(await convertToModelMessages(messages)),
-  ];
+  const history: ModelMessage[] = await convertToModelMessages(messages);
 
   try {
     const call = createResponsesCall(
       request,
-      { baseURL: "https://ai.gateway.lovable.dev/v1", apiKey, model: "openai/gpt-6-astra" },
+      { baseURL: "https://ai.gateway.lovable.dev/v1", apiKey, model: "openai/gpt-6-astra", instructions: SYSTEM_PROMPT },
       history,
     );
     return await call.response();

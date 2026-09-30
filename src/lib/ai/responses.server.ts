@@ -9,7 +9,7 @@ import {
 
 export function createResponsesCall(
   request: Request,
-  config: { baseURL: string; apiKey: string; model: string },
+  config: { baseURL: string; apiKey: string; model: string; instructions?: string },
   messages: ModelMessage[],
 ) {
   const runIdFetch = createLovableAiGatewayRunIdFetch(getLovableAiGatewayRunId(request));
@@ -23,6 +23,7 @@ export function createResponsesCall(
   const result = streamText({
     model: provider.responses(config.model),
     messages,
+    ...(config.instructions ? { instructions: config.instructions } : {}),
     abortSignal: request.signal,
     providerOptions: {
       openai: {
