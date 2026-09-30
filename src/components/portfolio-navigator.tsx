@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Search, X } from "lucide-react";
+import { ChevronDown, Mail, Search, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const DESTINATIONS = [
