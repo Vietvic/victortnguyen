@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiGameChatRouteImport } from './routes/api/game-chat'
 import { Route as LeadershipAisRouteImport } from './routes/leadership.ais'
 import { Route as ProjectsCollegeBudgetingSystemRouteImport } from './routes/projects.college-budgeting-system'
 import { Route as ProjectsDatakingSecurityAssessmentRouteImport } from './routes/projects.dataking-security-assessment'
@@ -19,6 +20,11 @@ import { Route as ProjectsMedicalDeviceRiskAssessmentRouteImport } from './route
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGameChatRoute = ApiGameChatRouteImport.update({
+  id: '/api/game-chat',
+  path: '/api/game-chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeadershipAisRoute = LeadershipAisRouteImport.update({
@@ -53,6 +59,7 @@ const ProjectsMedicalDeviceRiskAssessmentRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/game-chat': typeof ApiGameChatRoute
   '/leadership/ais': typeof LeadershipAisRoute
   '/projects/college-budgeting-system': typeof ProjectsCollegeBudgetingSystemRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
@@ -61,6 +68,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/game-chat': typeof ApiGameChatRoute
   '/leadership/ais': typeof LeadershipAisRoute
   '/projects/college-budgeting-system': typeof ProjectsCollegeBudgetingSystemRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
@@ -70,6 +78,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/game-chat': typeof ApiGameChatRoute
   '/leadership/ais': typeof LeadershipAisRoute
   '/projects/college-budgeting-system': typeof ProjectsCollegeBudgetingSystemRoute
   '/projects/dataking-security-assessment': typeof ProjectsDatakingSecurityAssessmentRoute
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/api/game-chat'
     | '/leadership/ais'
     | '/projects/college-budgeting-system'
     | '/projects/dataking-security-assessment'
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/api/game-chat'
     | '/leadership/ais'
     | '/projects/college-budgeting-system'
     | '/projects/dataking-security-assessment'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/api/game-chat'
     | '/leadership/ais'
     | '/projects/college-budgeting-system'
     | '/projects/dataking-security-assessment'
@@ -105,6 +117,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiGameChatRoute: typeof ApiGameChatRoute
   LeadershipAisRoute: typeof LeadershipAisRoute
   ProjectsCollegeBudgetingSystemRoute: typeof ProjectsCollegeBudgetingSystemRoute
   ProjectsDatakingSecurityAssessmentRoute: typeof ProjectsDatakingSecurityAssessmentRoute
@@ -119,6 +132,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/game-chat': {
+      id: '/api/game-chat'
+      path: '/api/game-chat'
+      fullPath: '/api/game-chat'
+      preLoaderRoute: typeof ApiGameChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leadership/ais': {
@@ -161,6 +181,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiGameChatRoute: ApiGameChatRoute,
   LeadershipAisRoute: LeadershipAisRoute,
   ProjectsCollegeBudgetingSystemRoute: ProjectsCollegeBudgetingSystemRoute,
   ProjectsDatakingSecurityAssessmentRoute:
