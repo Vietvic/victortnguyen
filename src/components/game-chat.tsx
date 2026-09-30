@@ -145,8 +145,8 @@ export function GameChat() {
         {open
           ? <X className="h-5 w-5 sm:h-6 sm:w-6" />
           : <MessageCircleQuestion className="h-5 w-5 sm:h-6 sm:w-6" />}
-        <span className="hidden xs:inline sm:inline">{open ? "Close" : "Play: spot the lie"}</span>
-        <span className="xs:hidden sm:hidden" aria-hidden="true">{open ? "Close" : "Play"}</span>
+        <span className="hidden sm:inline">{open ? "Close" : "Play: spot the lie"}</span>
+        <span className="sm:hidden">{open ? "Close" : "Play"}</span>
       </button>
     </div>
   );
