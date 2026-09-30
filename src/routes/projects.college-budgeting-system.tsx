@@ -45,7 +45,7 @@ const TAGS = [
 ];
 
 // ---- Interactive demo dataset ---------------------------------------------
-// Estimated resident tuition per semester, for demonstration purposes only.
+// Estimated tuition per semester (published sticker price, rounded), for demonstration purposes only.
 
 type Degree = "Certificate / Associate" | "Bachelor's" | "Master's";
 type Field =
@@ -55,6 +55,8 @@ type Field =
   | "Engineering"
   | "Education"
   | "Liberal Arts & Social Sciences";
+type Region = "Midwest" | "Northeast" | "South" | "West";
+type Location = Region | "Any";
 
 const FIELDS: Field[] = [
   "Business",
@@ -66,127 +68,126 @@ const FIELDS: Field[] = [
 ];
 
 const DEGREES: Degree[] = ["Certificate / Associate", "Bachelor's", "Master's"];
+const LOCATIONS: Location[] = ["Any", "Midwest", "Northeast", "South", "West"];
 
 interface School {
   name: string;
   location: string;
+  region: Region;
   costPerSemester: number;
   degrees: Degree[];
   fields: Field[];
-  note: string;
+  score: number; // overall reputation / outcomes score used to rank "best"
 }
 
-const SCHOOLS: School[] = [
-  {
-    name: "Minneapolis College",
-    location: "Minneapolis, MN",
-    costPerSemester: 3000,
-    degrees: ["Certificate / Associate"],
-    fields: ["Business", "Computer Science & IT", "Healthcare & Nursing", "Education", "Liberal Arts & Social Sciences"],
-    note: "Two-year community college with strong transfer pathways into Minnesota state universities.",
-  },
-  {
-    name: "St. Paul College",
-    location: "St. Paul, MN",
-    costPerSemester: 3100,
-    degrees: ["Certificate / Associate"],
-    fields: ["Business", "Computer Science & IT", "Healthcare & Nursing", "Engineering"],
-    note: "Technically focused community college with hands-on labs and apprenticeship connections.",
-  },
-  {
-    name: "Metropolitan State University",
-    location: "St. Paul & Minneapolis, MN",
-    costPerSemester: 4200,
-    degrees: ["Bachelor's", "Master's"],
-    fields: ["Business", "Computer Science & IT", "Healthcare & Nursing", "Education", "Liberal Arts & Social Sciences"],
-    note: "Urban state university built for working students — evening, weekend, and online options.",
-  },
-  {
-    name: "University of Minnesota Twin Cities",
-    location: "Minneapolis & St. Paul, MN",
-    costPerSemester: 7800,
-    degrees: ["Bachelor's", "Master's"],
-    fields: ["Business", "Computer Science & IT", "Healthcare & Nursing", "Engineering", "Education", "Liberal Arts & Social Sciences"],
-    note: "Flagship public research university with the widest range of majors and research opportunities.",
-  },
-  {
-    name: "Concordia University, St. Paul",
-    location: "St. Paul, MN",
-    costPerSemester: 8600,
-    degrees: ["Bachelor's", "Master's"],
-    fields: ["Business", "Computer Science & IT", "Healthcare & Nursing", "Education"],
-    note: "Private university known for accelerated adult and graduate programs.",
-  },
-  {
-    name: "Macalester College",
-    location: "St. Paul, MN",
-    costPerSemester: 14500,
-    degrees: ["Bachelor's"],
-    fields: ["Liberal Arts & Social Sciences", "Computer Science & IT", "Business"],
-    note: "Selective liberal arts college with small classes and a strong international community.",
-  },
-];
-
-const ADJACENT: Record<Degree, Degree[]> = {
-  "Certificate / Associate": ["Bachelor's", "Master's"],
-  "Bachelor's": ["Certificate / Associate", "Master's"],
-  "Master's": ["Bachelor's", "Certificate / Associate"],
+const DEG: Record<string, Degree> = { C: "Certificate / Associate", B: "Bachelor's", M: "Master's" };
+const FLD: Record<string, Field> = {
+  b: "Business", c: "Computer Science & IT", h: "Healthcare & Nursing",
+  e: "Engineering", d: "Education", l: "Liberal Arts & Social Sciences",
 };
 
+const RAW: [string, string, Region, number, string, string, number][] = [
+  // Midwest
+  ["Minneapolis College", "Minneapolis, MN", "Midwest", 3000, "C", "bchdl", 40],
+  ["St. Paul College", "St. Paul, MN", "Midwest", 3100, "C", "bche", 38],
+  ["Metropolitan State University", "St. Paul, MN", "Midwest", 4200, "BM", "bchdl", 52],
+  ["University of Minnesota Twin Cities", "Minneapolis, MN", "Midwest", 8000, "BM", "bchedl", 80],
+  ["University of Wisconsin–Madison", "Madison, WI", "Midwest", 5800, "BM", "bchedl", 86],
+  ["University of Michigan", "Ann Arbor, MI", "Midwest", 9000, "BM", "bchedl", 93],
+  ["University of Illinois Urbana-Champaign", "Champaign, IL", "Midwest", 8500, "BM", "bchedl", 88],
+  ["Purdue University", "West Lafayette, IN", "Midwest", 5000, "BM", "bched", 84],
+  ["Northwestern University", "Evanston, IL", "Midwest", 33000, "BM", "bchedl", 96],
+  ["University of Chicago", "Chicago, IL", "Midwest", 34000, "BM", "bcl", 97],
+  ["Macalester College", "St. Paul, MN", "Midwest", 32000, "B", "bcl", 82],
+  ["Harper College", "Palatine, IL", "Midwest", 2400, "C", "bchl", 36],
+  // Northeast
+  ["Massachusetts Institute of Technology", "Cambridge, MA", "Northeast", 30500, "BM", "bce", 99],
+  ["Harvard University", "Cambridge, MA", "Northeast", 30000, "BM", "bchedl", 99],
+  ["Columbia University", "New York, NY", "Northeast", 34500, "BM", "bchedl", 96],
+  ["University of Pennsylvania", "Philadelphia, PA", "Northeast", 33000, "BM", "bchedl", 97],
+  ["Cornell University", "Ithaca, NY", "Northeast", 33500, "BM", "bchedl", 95],
+  ["Penn State University", "University Park, PA", "Northeast", 9500, "BM", "bchedl", 78],
+  ["Rutgers University", "New Brunswick, NJ", "Northeast", 8500, "BM", "bchedl", 76],
+  ["University of Massachusetts Amherst", "Amherst, MA", "Northeast", 8800, "BM", "bchedl", 79],
+  ["CUNY Baruch College", "New York, NY", "Northeast", 3700, "BM", "bl", 70],
+  ["Bunker Hill Community College", "Boston, MA", "Northeast", 3200, "C", "bchl", 35],
+  // South
+  ["Georgia Institute of Technology", "Atlanta, GA", "South", 6200, "BM", "bce", 92],
+  ["University of Texas at Austin", "Austin, TX", "South", 5700, "BM", "bchedl", 90],
+  ["University of Florida", "Gainesville, FL", "South", 3200, "BM", "bchedl", 87],
+  ["University of North Carolina at Chapel Hill", "Chapel Hill, NC", "South", 4400, "BM", "bchdl", 89],
+  ["University of Virginia", "Charlottesville, VA", "South", 9500, "BM", "bchedl", 91],
+  ["Duke University", "Durham, NC", "South", 32000, "BM", "bchel", 97],
+  ["Vanderbilt University", "Nashville, TN", "South", 31500, "BM", "bchedl", 94],
+  ["Texas A&M University", "College Station, TX", "South", 6400, "BM", "bchedl", 82],
+  ["Austin Community College", "Austin, TX", "South", 1400, "C", "bchel", 37],
+  ["Valencia College", "Orlando, FL", "South", 1600, "C", "bchl", 42],
+  // West
+  ["Stanford University", "Stanford, CA", "West", 31000, "BM", "bchedl", 99],
+  ["University of California, Berkeley", "Berkeley, CA", "West", 7600, "BM", "bcedl", 95],
+  ["University of California, Los Angeles", "Los Angeles, CA", "West", 7200, "BM", "bchedl", 95],
+  ["University of Southern California", "Los Angeles, CA", "West", 34000, "BM", "bchedl", 92],
+  ["University of Washington", "Seattle, WA", "West", 6300, "BM", "bchedl", 90],
+  ["California Institute of Technology", "Pasadena, CA", "West", 32000, "BM", "ce", 98],
+  ["Arizona State University", "Tempe, AZ", "West", 6200, "BM", "bchedl", 76],
+  ["University of Colorado Boulder", "Boulder, CO", "West", 6800, "BM", "bcedl", 80],
+  ["De Anza College", "Cupertino, CA", "West", 800, "C", "bchl", 45],
+  ["Santa Monica College", "Santa Monica, CA", "West", 700, "C", "bchl", 44],
+];
+
+const SCHOOLS: School[] = RAW.map(([name, location, region, costPerSemester, d, f, score]) => ({
+  name, location, region, costPerSemester, score,
+  degrees: d.split("").map((k) => DEG[k]!).filter(Boolean),
+  fields: f.split("").map((k) => FLD[k]!).filter(Boolean),
+}));
+
+interface RankedSchool extends School { overBudget: boolean }
+
 interface Recommendation {
-  school: School;
+  school: RankedSchool;
   headline: string;
   detail: string;
-  alternatives: School[];
+  alternatives: RankedSchool[];
 }
 
 function parseBudget(raw: string): number | null {
   const cleaned = raw.replace(/[$,\s]/g, "");
   if (!/^\d+(\.\d+)?$/.test(cleaned)) return null;
   const value = Math.round(Number(cleaned));
-  if (value < 500 || value > 30000) return null;
+  if (value < 500 || value > 100000) return null;
   return value;
 }
 
-function recommend(field: Field, degree: Degree, budget: number): Recommendation | null {
-  let pool = SCHOOLS.filter((s) => s.degrees.includes(degree) && s.fields.includes(field));
-  let fallbackNote: string | null = null;
-
-  if (pool.length === 0) {
-    for (const alt of ADJACENT[degree]) {
-      pool = SCHOOLS.filter((s) => s.degrees.includes(alt) && s.fields.includes(field));
-      if (pool.length > 0) {
-        fallbackNote = `No ${degree.toLowerCase()} program for ${field} in the demo data — this is the closest match at the ${alt.toLowerCase()} level.`;
-        break;
-      }
-    }
-  }
+function recommend(field: Field, degree: Degree, location: Location, budget: number): Recommendation | null {
+  const pool = SCHOOLS.filter(
+    (s) => s.degrees.includes(degree) && s.fields.includes(field) && (location === "Any" || s.region === location),
+  );
   if (pool.length === 0) return null;
 
-  const within = pool.filter((s) => s.costPerSemester <= budget);
-  const ranked = [...(within.length > 0 ? within : pool)].sort(
-    (a, b) => (within.length > 0 ? b.costPerSemester - a.costPerSemester : a.costPerSemester - b.costPerSemester),
-  );
-  if (ranked.length === 0 || !ranked[0]) return null;
-  const best: School = ranked[0];
+  const within: RankedSchool[] = pool
+    .filter((s) => s.costPerSemester <= budget)
+    .sort((a, b) => b.score - a.score || a.costPerSemester - b.costPerSemester)
+    .map((s) => ({ ...s, overBudget: false }));
+  const over: RankedSchool[] = pool
+    .filter((s) => s.costPerSemester > budget)
+    .sort((a, b) => a.costPerSemester - b.costPerSemester)
+    .map((s) => ({ ...s, overBudget: true }));
 
-  const headline =
-    within.length > 0
-      ? `Fits your budget — about $${best.costPerSemester.toLocaleString()} per semester`
-      : `Lowest-cost match — about $${best.costPerSemester.toLocaleString()} per semester`;
+  const list = [...within, ...over].slice(0, 10);
+  const best = list[0];
+  if (!best) return null;
+  const where = location === "Any" ? "anywhere in the U.S." : `in the ${location}`;
 
-  const detail =
-    within.length > 0
-      ? `Estimated $${best.costPerSemester.toLocaleString()} per semester, about $${(best.costPerSemester * 2).toLocaleString()} per year — under your $${budget.toLocaleString()} target. ${best.note}`
-      : `The demo data has no ${field} program under $${budget.toLocaleString()} per semester. ${best.note} Consider a higher budget or a transfer pathway starting at a community college.`;
+  const headline = best.overBudget
+    ? `Closest match — about ${formatMoney(best.costPerSemester)} per semester`
+    : `Best fit within your budget — about ${formatMoney(best.costPerSemester)} per semester`;
+  const detail = best.overBudget
+    ? `No ${degree.toLowerCase()} program in ${field} ${where} fits under ${formatMoney(budget)} per semester in the demo data, so this is the lowest-cost option. Consider raising your budget or starting at a community college.`
+    : `The highest-rated ${degree.toLowerCase()} option for ${field} ${where} that fits under your ${formatMoney(budget)} target — roughly ${formatMoney(best.costPerSemester * 2)} per year in tuition.`;
 
-  return {
-    school: best,
-    headline,
-    detail: fallbackNote ? `${fallbackNote} ${detail}` : detail,
-    alternatives: ranked.slice(1, 3),
-  };
+  return { school: best, headline, detail, alternatives: list.slice(1) };
 }
+
 
 function formatMoney(value: number): string {
   return `$${value.toLocaleString()}`;
@@ -289,10 +290,12 @@ function Hackathon() {
 function InteractiveDemo() {
   const [field, setField] = useState<Field | "">("");
   const [degree, setDegree] = useState<Degree | "">("");
+  const [location, setLocation] = useState<Location>("Any");
   const [budget, setBudget] = useState("");
   const [budgetError, setBudgetError] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
   const [result, setResult] = useState<Recommendation | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -306,11 +309,12 @@ function InteractiveDemo() {
     }
     const parsed = parseBudget(budget);
     if (parsed === null) {
-      setBudgetError("Enter a budget between $500 and $30,000 per semester.");
+      setBudgetError("Enter a budget between $500 and $100,000 per semester.");
       setResult(null);
       return;
     }
-    setResult(recommend(field, degree, parsed));
+    setSubmitted(true);
+    setResult(recommend(field, degree, location, parsed));
   }
 
   const inputClass =
@@ -322,14 +326,14 @@ function InteractiveDemo() {
         <div className="grid gap-5 border-b border-border pb-10 md:grid-cols-[1fr_2fr]">
           <p className="eyebrow text-accent">Try the idea</p>
           <div>
-            <h2 className="font-display text-3xl md:text-4xl">Answer three questions, get a school.</h2>
+            <h2 className="font-display text-3xl md:text-4xl">Answer four questions, get a school.</h2>
             <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
-              A working recreation of the questionnaire flow we designed at the hackathon. Pick a field of study and degree type, enter what you can spend per semester, and the site recommends a Minnesota college — using estimated resident tuition for demonstration purposes, not real quotes.
+              A working recreation of the questionnaire flow we designed at the hackathon. Pick a field of study and degree type, enter what you can spend per semester, and the site recommends the best-rated U.S. college that fits, plus other options to compare — using estimated tuition for demonstration purposes, not real quotes.
             </p>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} noValidate className="mt-12 grid gap-6 md:grid-cols-3">
+        <form onSubmit={handleSubmit} noValidate className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <label htmlFor="field-of-study" className="eyebrow">Field of study</label>
             <select
@@ -357,12 +361,24 @@ function InteractiveDemo() {
           </div>
 
           <div>
+            <label htmlFor="location" className="eyebrow">Location</label>
+            <select
+              id="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value as Location)}
+              className={`${inputClass} mt-3`}
+            >
+              {LOCATIONS.map((l) => <option key={l} value={l}>{l === "Any" ? "Any location" : l}</option>)}
+            </select>
+          </div>
+
+          <div>
             <label htmlFor="budget" className="eyebrow">Price range per semester ($)</label>
             <input
               id="budget"
               type="text"
               inputMode="numeric"
-              placeholder="e.g. 4,500"
+              placeholder="e.g. 10,000"
               value={budget}
               onChange={(e) => { setBudget(e.target.value); setBudgetError(null); }}
               aria-invalid={budgetError ? "true" : undefined}
@@ -371,9 +387,9 @@ function InteractiveDemo() {
             {budgetError && <p className="mt-2 text-xs text-destructive">{budgetError}</p>}
           </div>
 
-          {formError && <p className="text-sm text-destructive md:col-span-3">{formError}</p>}
+          {formError && <p className="text-sm text-destructive md:col-span-2 lg:col-span-4">{formError}</p>}
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-2 lg:col-span-4">
             <button
               type="submit"
               className="bg-signal inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-primary transition-opacity hover:opacity-90"
@@ -382,6 +398,10 @@ function InteractiveDemo() {
             </button>
           </div>
         </form>
+
+        {submitted && !result && (
+          <p className="mt-10 text-sm text-muted-foreground" role="status">No colleges in the demo data match that field, degree, and location. Try "Any location" or a different degree type.</p>
+        )}
 
         {result && (
           <div className="mt-10 border-l-4 border-accent bg-card p-6 md:p-10" role="status">
@@ -393,20 +413,20 @@ function InteractiveDemo() {
 
             {result.alternatives.length > 0 && (
               <div className="mt-8 border-t border-border pt-6">
-                <p className="eyebrow">Other options to compare</p>
-                <ul className="mt-4 space-y-3">
+                <p className="eyebrow">Other colleges to compare</p>
+                <ol className="mt-4 space-y-3">
                   {result.alternatives.map((alt) => (
                     <li key={alt.name} className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
                       <span className="font-medium">{alt.name} <span className="text-muted-foreground">· {alt.location}</span></span>
-                      <span className="text-muted-foreground">≈ {formatMoney(alt.costPerSemester)} / semester</span>
+                      <span className={alt.overBudget ? "text-destructive" : "text-muted-foreground"}>≈ {formatMoney(alt.costPerSemester)} / semester{alt.overBudget ? " · over budget" : ""}</span>
                     </li>
                   ))}
-                </ul>
+                </ol>
               </div>
             )}
 
             <p className="mt-8 text-xs text-muted-foreground">
-              Demo only — tuition figures are rough estimates for a Minnesota resident and are not offers or quotes. Always confirm costs with the school.
+              Demo only — tuition figures are rough estimates (in-state for public schools) and are not offers or quotes. Always confirm costs with the school.
             </p>
           </div>
         )}
