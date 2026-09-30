@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Search, X } from "lucide-react";
+import { ChevronDown, Mail, Search, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const DESTINATIONS = [
@@ -104,6 +104,15 @@ export function PortfolioNavigator() {
             </div>
           )}
         </div>
+
+        <a
+          href="mailto:victortnguyen18@gmail.com"
+          aria-label="Email Victor Nguyen"
+          className="interactive-lift flex h-10 shrink-0 items-center gap-2 bg-signal px-3 text-sm font-bold text-primary sm:px-4"
+        >
+          <Mail size={16} aria-hidden="true" />
+          <span className="hidden sm:inline">Contact</span>
+        </a>
 
         <div className="relative shrink-0">
           <button
