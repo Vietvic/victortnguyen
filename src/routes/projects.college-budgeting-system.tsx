@@ -167,7 +167,8 @@ function recommend(field: Field, degree: Degree, budget: number): Recommendation
   const ranked = [...(within.length > 0 ? within : pool)].sort(
     (a, b) => (within.length > 0 ? b.costPerSemester - a.costPerSemester : a.costPerSemester - b.costPerSemester),
   );
-  const best = ranked[0];
+  if (ranked.length === 0 || !ranked[0]) return null;
+  const best: School = ranked[0];
 
   const headline =
     within.length > 0
