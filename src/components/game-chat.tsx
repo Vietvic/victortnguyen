@@ -140,9 +140,9 @@ export function GameChat() {
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close two truths and a lie game" : "Play two truths and a lie"}
-        className="flex items-center gap-2 border border-border bg-primary px-4 py-3 text-sm font-bold text-primary-foreground shadow-xl"
+        className={`flex items-center gap-2.5 border-2 border-primary bg-signal px-6 py-4 text-base font-bold text-primary shadow-2xl ${open ? "" : "game-bounce"}`}
       >
-        {open ? <X size={18} /> : <MessageCircleQuestion size={18} className="text-signal" />}
+        {open ? <X size={24} /> : <MessageCircleQuestion size={24} />}
         <span>{open ? "Close" : "Play: spot the lie"}</span>
       </button>
     </div>

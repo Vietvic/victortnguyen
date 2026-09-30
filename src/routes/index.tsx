@@ -129,7 +129,7 @@ function Hero() {
             Management Information Systems professional with experience across systems administration, business operations, cybersecurity, and program delivery.
           </p>
           <div className="animate-rise-delay-3 mt-9 flex flex-wrap gap-3">
-            <a href="#projects" className="bg-signal inline-flex items-center gap-2 px-5 py-3 text-sm font-bold text-primary transition-opacity hover:opacity-90">View selected projects <ArrowDown size={16} /></a>
+            <a href="#projects" className="bg-signal inline-flex items-center gap-3 px-7 py-4 text-base font-bold text-primary transition-opacity hover:opacity-90">View selected projects <ArrowDown size={20} /></a>
             <a href="/Victor-Nguyen-Resume.pdf" download="Victor-Nguyen-Resume.pdf" onClick={downloadResume} className="inline-flex items-center gap-2 border border-primary-foreground/35 px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary-foreground hover:text-primary">Résumé <Download size={16} /></a>
           </div>
         </div>

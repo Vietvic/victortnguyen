@@ -164,7 +164,7 @@ function NextStep() {
     <section className="bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-[2fr_1fr] md:items-center md:px-8 md:py-20">
         <div><p className="eyebrow text-signal">Leadership in practice</p><h2 className="font-display mt-4 max-w-3xl text-3xl leading-tight md:text-5xl">Bringing people, technology, and professional opportunity together.</h2></div>
-        <div className="flex flex-wrap gap-3"><Link to="/" className="bg-signal inline-flex items-center gap-2 px-5 py-3 text-sm font-bold text-primary transition-opacity hover:opacity-90">View portfolio <ArrowUpRight size={16} /></Link><a href="mailto:victortnguyen18@gmail.com" className="inline-flex items-center gap-2 border border-primary-foreground/35 px-5 py-3 text-sm font-semibold transition-colors hover:bg-primary-foreground hover:text-primary"><Mail size={16} /> Contact me</a></div>
+        <div className="flex flex-wrap gap-4"><Link to="/" className="bg-signal inline-flex items-center gap-3 px-7 py-4 text-base font-bold text-primary transition-opacity hover:opacity-90">View portfolio <ArrowUpRight size={20} /></Link><a href="mailto:victortnguyen18@gmail.com" className="inline-flex items-center gap-3 border border-primary-foreground/35 px-7 py-4 text-base font-semibold transition-colors hover:bg-primary-foreground hover:text-primary"><Mail size={20} /> Contact me</a></div>
       </div>
     </section>
   );
