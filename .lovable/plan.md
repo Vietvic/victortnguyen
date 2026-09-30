@@ -1,13 +1,17 @@
-# Update portfolio projects, education, and AIS leadership
+# Portfolio Search and Navigation
 
-## Changes
-- Remove homepage project cards 02 (Friendsfy Application) and 03 (Home Server & Networking), then renumber the four remaining projects in sequence.
-- Make the B.S. in Cybersecurity more visible near the top of the homepage while retaining its full education entry.
-- Update AIS wording throughout the homepage to “Association for Information Systems — Metropolitan State University Chapter.”
-- Make the AIS leadership entry clickable and add a dedicated page describing the chapter and Victor’s supported Vice President responsibilities: executive-board collaboration, projects, workshops, networking, professional development, member engagement, and stakeholder communication.
-- Add clear external links to the official student organization page and The Metropolitan article about the chapter’s national AI win and expanded opportunities.
+## What will change
 
-## Verification
-- Check the homepage and AIS page on desktop and mobile.
-- Confirm project links, both AIS external links, and the back-to-portfolio link work.
-- Confirm page metadata and the site build remain valid.
+- Add a compact navigation bar at the top of every portfolio page.
+- Include a search field that recommends matching pages and key portfolio topics while the visitor types.
+- Let each recommendation open the relevant page or homepage section.
+- Add a page dropdown listing the homepage, AIS leadership page, and all four project pages.
+- Give working buttons and prominent links a consistent raised “pop-out” effect when hovered or keyboard-focused.
+
+## Technical details
+
+- Build the navigation as one shared React component rendered by the root layout so it stays consistent everywhere.
+- Use a static, CV-supported search index covering experience, education, skills, leadership, and project content; no data service is needed.
+- Use TanStack Router links for internal navigation and preserve homepage section anchors for recruiter scanning.
+- Apply the interaction effect through a shared semantic CSS utility, with reduced-motion support and visible keyboard focus.
+- Verify search selection, dropdown navigation, horizontal overflow, and hover/focus states at desktop and mobile sizes.
